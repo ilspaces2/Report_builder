@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:h2:./database
+    username: sa
+    password:
+
+  jackson:
+    visibility:
+      field: any
+      getter: none
+      setter: none
+      is-getter: none
