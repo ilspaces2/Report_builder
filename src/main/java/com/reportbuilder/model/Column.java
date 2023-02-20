@@ -1,9 +1,15 @@
 package com.reportbuilder.model;
 
+import lombok.*;
+
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Column {
 
-    //length 50;
     private String title;
 
-    private TypeOfData type;
+    private String type;
 }

@@ -1,7 +1,14 @@
 package com.reportbuilder.model;
 
+import lombok.*;
+
 import java.util.List;
 
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Table {
 
     //length 50;
@@ -9,7 +16,7 @@ public class Table {
 
     private int columnsAmount;
 
-    private String primaryKey;
-
     private List<Column> columnInfos;
+
+    private String primaryKey;
 }
