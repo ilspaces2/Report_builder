@@ -1,7 +1,7 @@
 package com.reportbuilder.controller;
 
 import com.reportbuilder.model.Table;
-import com.reportbuilder.repository.TableRepositoryImpl;
+import com.reportbuilder.repository.TableRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class TableController {
 
-    private final TableRepositoryImpl tableRepository;
+    private final TableRepository tableRepository;
 
     @PostMapping(value = "/create-table", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)

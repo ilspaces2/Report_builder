@@ -1,5 +1,8 @@
 package com.reportbuilder.model;
 
+import lombok.Data;
+
+@Data
 public class TableQuery {
 
     private int queryId;

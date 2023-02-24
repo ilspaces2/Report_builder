@@ -1,14 +1,10 @@
 package com.reportbuilder.model;
 
-import lombok.*;
+import lombok.Data;
 
 import java.util.List;
 
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class Table {
 
     //length 50;

@@ -1,12 +1,8 @@
 package com.reportbuilder.model;
 
-import lombok.*;
+import lombok.Data;
 
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class Column {
 
     private String title;
