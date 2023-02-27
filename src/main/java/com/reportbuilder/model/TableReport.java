@@ -9,11 +9,9 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Report {
+public class TableReport {
 
-    private int reportId;
+    private String tableName;
 
-    private int tableAmount;
-
-    private List<TableReport> tables;
+    private List<ColumnReport> columns;
 }

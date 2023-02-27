@@ -4,16 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Report {
+public class ColumnReport {
 
-    private int reportId;
+    private String title;
 
-    private int tableAmount;
+    private String type;
 
-    private List<TableReport> tables;
+    private int size;
 }
