@@ -5,6 +5,7 @@ import com.reportbuilder.model.Table;
 import com.reportbuilder.repository.TableRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 //https://mkyong.com/spring/spring-jdbctemplate-querying-examples/
 @RequiredArgsConstructor
+@Repository
 public class TableRepositoryJdbcTemplateImpl implements TableRepository {
 
     private final JdbcTemplate jdbcTemplate;

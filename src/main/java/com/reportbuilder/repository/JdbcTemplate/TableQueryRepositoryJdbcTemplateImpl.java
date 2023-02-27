@@ -4,11 +4,13 @@ import com.reportbuilder.model.TableQuery;
 import com.reportbuilder.repository.TableQueryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
+@Repository
 public class TableQueryRepositoryJdbcTemplateImpl implements TableQueryRepository {
 
     private final JdbcTemplate jdbcTemplate;

@@ -1,12 +1,10 @@
 package com.reportbuilder.repository;
 
 import com.reportbuilder.model.SingleQuery;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
-@Repository
 public interface SingleQueryRepository {
 
     void save(SingleQuery singleQuery);
