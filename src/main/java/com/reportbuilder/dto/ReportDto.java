@@ -1,4 +1,4 @@
-package com.reportbuilder.model;
+package com.reportbuilder.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,9 +9,10 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TableReport {
+public class ReportDto {
 
-    private String tableName;
+    private int reportId;
 
-    private List<Column> columns;
+    private List<String> tableNames;
+
 }
