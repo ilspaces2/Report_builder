@@ -1,7 +1,7 @@
 package com.reportbuilder.repository;
 
 import com.reportbuilder.dto.ReportDto;
-import com.reportbuilder.model.Column;
+import com.reportbuilder.model.ColumnReport;
 import com.reportbuilder.model.Report;
 
 import java.util.List;
@@ -13,5 +13,5 @@ public interface ReportRepository {
 
     Optional<Report> getById(int id);
 
-    List<Column> getTableColumns(String tableName);
+    List<ColumnReport> getTableColumns(String tableName,boolean withSize);
 }

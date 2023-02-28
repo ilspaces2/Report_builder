@@ -13,5 +13,5 @@ public class TableReport {
 
     private String tableName;
 
-    private List<Column> columns;
+    private List<ColumnReport> columns;
 }
