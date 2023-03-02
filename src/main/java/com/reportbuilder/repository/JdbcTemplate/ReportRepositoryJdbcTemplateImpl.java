@@ -1,6 +1,7 @@
 package com.reportbuilder.repository.JdbcTemplate;
 
 import com.reportbuilder.dto.ReportDto;
+import com.reportbuilder.exception.ReportException;
 import com.reportbuilder.model.ColumnReport;
 import com.reportbuilder.model.Report;
 import com.reportbuilder.model.TableReport;
@@ -10,11 +11,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Repository
@@ -24,8 +23,13 @@ public class ReportRepositoryJdbcTemplateImpl implements ReportRepository {
     private final JdbcTemplate jdbcTemplate;
 
     @Override
-    @Transactional
     public void save(ReportDto reportDto) {
+        if (jdbcTemplate.queryForObject(
+                "select report_id from table_reports_id where report_id=?",
+                Integer.class,
+                reportDto.getReportId()) != 0) {
+            throw new ReportException("Report already exists");
+        }
         jdbcTemplate.update(
                 "insert into table_reports_id (report_id) values (?)",
                 reportDto.getReportId());
@@ -45,7 +49,7 @@ public class ReportRepositoryJdbcTemplateImpl implements ReportRepository {
             return Optional.empty();
         }
         List<TableReport> tableReports = new ArrayList<>();
-        tableNames.forEach(name -> tableReports.add(new TableReport(name, getTableColumns(name,true))));
+        tableNames.forEach(name -> tableReports.add(new TableReport(name, getTableColumns(name, true))));
         return Optional.of(new Report(id, tableReports.size(), tableReports));
     }
 
@@ -53,21 +57,30 @@ public class ReportRepositoryJdbcTemplateImpl implements ReportRepository {
      * Достаем, по имени таблицы, названия стобцов и их тип
      *
      * @param tableName имя таблицы.
-     * @return список колонок.
+     * @return список столбцов.
      */
     @Override
-    public List<ColumnReport> getTableColumns(String tableName,boolean withSize) {
+    public List<ColumnReport> getTableColumns(String tableName, boolean withSize) {
         String sql = """
                 select COLUMN_NAME title ,DATA_TYPE type from INFORMATION_SCHEMA.COLUMNS
                 where TABLE_NAME = ?
                 """;
         List<ColumnReport> reports = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(ColumnReport.class), tableName.toUpperCase());
         if (reports.size() == 0) {
-            throw new NoSuchElementException("Table not found");
+            throw new ReportException("Table not found: " + tableName);
         }
-        return modificationColumns(reports, tableName,withSize);
+        return modificationColumns(reports, tableName, withSize);
     }
 
+    /**
+     * Метод модернезирует название и тип столбцов. Так же имеется возможность расщитать
+     * количество занятых ячеек в столбце.
+     *
+     * @param reports   список столбцов
+     * @param tableName название таблицы
+     * @param size      с расчетом количества заполненых ячеек или без
+     * @return модернезированный список столбцов
+     */
     private List<ColumnReport> modificationColumns(List<ColumnReport> reports, String tableName, boolean size) {
         return reports.stream().map(report -> {
             report.setTitle(report.getTitle().toLowerCase());

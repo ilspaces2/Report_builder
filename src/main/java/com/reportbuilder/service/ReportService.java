@@ -1,17 +1,16 @@
 package com.reportbuilder.service;
 
 import com.reportbuilder.dto.ReportDto;
+import com.reportbuilder.exception.ReportException;
 import com.reportbuilder.model.ColumnReport;
 import com.reportbuilder.model.Report;
 import com.reportbuilder.model.TableReport;
-import com.reportbuilder.model.TypeOfData;
 import com.reportbuilder.repository.ReportRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -21,7 +20,7 @@ public class ReportService {
 
     public void save(Report report) {
         if (report.getTableAmount() != report.getTables().size()) {
-            throw new NoSuchElementException();
+            throw new ReportException("Table amount and tables size not equals");
         }
         List<String> tableNames = new ArrayList<>();
         for (TableReport tableReport : report.getTables()) {
@@ -33,27 +32,27 @@ public class ReportService {
     }
 
     public Report getById(int id) {
-        return reportRepository.getById(id).orElse(null);
+        return reportRepository.getById(id).orElseThrow(() -> new ReportException("Report not found: " + id));
     }
 
     /**
-     * Сравниваем два списка колонок.
+     * Сравниваем два списка столбцов.
      *
-     * @param baseColumns   список колонок таблицы, полученный из базы данных.
-     * @param reportColumns список колонок таблицы, полученный из запроса post.
+     * @param baseColumns   список столбцов таблицы, полученный из базы данных.
+     * @param reportColumns список столбцов таблицы, полученный из запроса post.
      */
     private void equalsTableColumns(List<ColumnReport> baseColumns, List<ColumnReport> reportColumns) {
         if (baseColumns.size() != reportColumns.size()) {
-            throw new NoSuchElementException("Base columns capacity not equal report column capacity");
+            throw new ReportException("Database columns and report columns are different");
         }
         for (int i = 0; i < baseColumns.size(); i++) {
             ColumnReport base = baseColumns.get(i);
             ColumnReport report = reportColumns.get(i);
             if (!base.getTitle().equalsIgnoreCase(report.getTitle())) {
-                throw new NoSuchElementException("Column titles not equals");
+                throw new ReportException("Column titles '" + report.getTitle() + "' not found");
             }
             if (!base.getType().equals(report.getType())) {
-                throw new NoSuchElementException("Column types not equals");
+                throw new ReportException("Wrong column type: " + report.getTitle() + " - " + report.getType());
             }
         }
     }
