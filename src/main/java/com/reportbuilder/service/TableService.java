@@ -19,7 +19,7 @@ public class TableService {
     }
 
     public Table getByName(String name) {
-        return tableRepository.getByName(name).orElseThrow(() -> new TableException("Table not found"));
+        return tableRepository.getByName(name).orElse(null);
     }
 
     public void deleteByName(String name) {

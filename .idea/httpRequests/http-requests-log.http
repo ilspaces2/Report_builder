@@ -1,0 +1,979 @@
+GET http://localhost:8080/api/table/get-table-by-name/Customer43
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/table/get-table-by-name/Customer
+Accept: application/json
+
+<> 2023-03-02T204513.200.json
+
+###
+
+GET http://localhost:8080/api/table/get-table-by-name/Customer
+Accept: application/json
+
+<> 2023-03-02T202806.200.json
+
+###
+
+GET http://localhost:8080/api/table/get-table-by-name/Customer
+Accept: application/json
+
+<> 2023-03-02T202230.200.json
+
+###
+
+GET http://localhost:8080/api/table/get-table-by-name/Customer
+Accept: application/json
+
+<> 2023-03-02T202143.200.json
+
+###
+
+GET http://localhost:8080/api/table/get-table-by-name/Customer
+Accept: application/json
+
+<> 2023-03-02T202037.200.json
+
+###
+
+GET http://localhost:8080/api/table/get-table-by-name/Customer
+Accept: application/json
+
+<> 2023-03-02T201934.200.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer4",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "VARCHAR("
+    }
+  ],
+  "primaryKey": "CustomerId"
+}
+
+<> 2023-03-02T200845.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer4",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "VARCHAR"
+    }
+  ],
+  "primaryKey": "CustomerId"
+}
+
+<> 2023-03-02T200831.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer4",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "VARCHAR)"
+    }
+  ],
+  "primaryKey": "CustomerId"
+}
+
+<> 2023-03-02T200822.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer4",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "VARCHAR(20)"
+    }
+  ],
+  "primaryKey": "CustomerId"
+}
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer3",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "VARCHAR(40)"
+    }
+  ],
+  "primaryKey": "CustomerId"
+}
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer3",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId",
+      "type": "int12"
+    },
+    {
+      "title": "FirstName2",
+      "type": "VARCHAR(40)"
+    }
+  ],
+  "primaryKey": "CustomerId"
+}
+
+<> 2023-03-02T195759.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer3",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "VARCHAR(40)"
+    }
+  ],
+  "primaryKey": "CustomerId"
+}
+
+<> 2023-03-02T195634.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer3",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomфerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "VARCHAR(40)"
+    }
+  ],
+  "primaryKey": "CustomerId"
+}
+
+<> 2023-03-02T195355.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "ыCustomer3",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomфerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "VARCHAR(40)"
+    }
+  ],
+  "primaryKey": "CustomerId"
+}
+
+<> 2023-03-02T195345.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer3фы",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomфerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "VARCHAR(40)"
+    }
+  ],
+  "primaryKey": "CustomerId"
+}
+
+<> 2023-03-02T195338.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer3фы",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomфerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "VARCHAR(40)"
+    }
+  ],
+  "primaryKey": "CustomerId"
+}
+
+<> 2023-03-02T195314.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer3",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomфerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "VARCHAR(40)"
+    }
+  ],
+  "primaryKey": "CustomerId"
+}
+
+<> 2023-03-02T195143.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer3",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomфerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "VARCHAR(40)"
+    }
+  ],
+  "primaryKey": "CustomerId"
+}
+
+<> 2023-03-02T194313.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer3",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomфerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "VARCHAR(40)"
+    }
+  ],
+  "primaryKey": "CustomerId"
+}
+
+<> 2023-03-02T194220.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer3",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "VARCHAR(40)"
+    }
+  ],
+  "primaryKey": "1"
+}
+
+<> 2023-03-02T193813.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "фыCustomer3",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "1"
+}
+
+<> 2023-03-02T192305.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer3",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "1"
+}
+
+<> 2023-03-02T191100.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer3",
+  "columnsAmount": 0,
+  "columnInfos": [
+    {
+      "title": "CustomerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": ""
+}
+
+<> 2023-03-02T190948.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer3",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": ""
+}
+
+<> 2023-03-02T190939.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer3",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": ""
+}
+
+<> 2023-03-02T190900.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer3",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+<> 2023-03-02T190844.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "фвыв",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId2",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+<> 2023-03-02T185445.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "фвыв",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId2",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+<> 2023-03-02T185339.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId2",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+<> 2023-03-02T185330.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer2ыыв",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId2",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+<> 2023-03-02T185322.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer2",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId2",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+<> 2023-03-02T185314.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer2",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId2",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+<> 2023-03-02T185121.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId2",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+<> 2023-03-02T185058.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId2",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+<> 2023-03-02T185045.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "ффыв",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId2",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+<> 2023-03-02T185034.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "ффыв",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId2",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+<> 2023-03-02T185015.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer2",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId2",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+<> 2023-03-02T184813.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer2фыв",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId2",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+<> 2023-03-02T184803.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer2фыв",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId2",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+<> 2023-03-02T184527.500.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer2",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId2",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+<> 2023-03-02T184227.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer2",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId2",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+<> 2023-03-02T184219.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer2ффыв",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId2",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+<> 2023-03-02T184208.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer2ффыв",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId2",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer2",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId2",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+<> 2023-03-02T184059.406.json
+
+###
+
+DELETE http://localhost:8080/api/table/drop-table/Asdf
+
+<> 2023-03-02T183244.406.json
+
+###
+
+DELETE http://localhost:8080/api/table/drop-table/Asdf
+
+<> 2023-03-02T183148.406.json
+
+###
+
+DELETE http://localhost:8080/api/table/drop-table/Asdf
+
+<> 2023-03-02T182835.406.json
+
+###
+
+POST http://localhost:8080/api/table/create-table
+Content-Type: application/json
+
+{
+  "tableName": "Customer2",
+  "columnsAmount": 2,
+  "columnInfos": [
+    {
+      "title": "CustomerId2",
+      "type": "int4"
+    },
+    {
+      "title": "FirstName2",
+      "type": "varchar"
+    }
+  ],
+  "primaryKey": "CustomerId2"
+}
+
+<> 2023-03-02T155625.406.json
+
+###
+
