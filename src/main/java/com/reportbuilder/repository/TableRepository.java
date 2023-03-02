@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface TableRepository {
 
-    void save(Table table);
+    void save(String sql);
 
     Optional<Table> getByName(String name);
 

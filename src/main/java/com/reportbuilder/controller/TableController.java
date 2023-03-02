@@ -1,7 +1,8 @@
 package com.reportbuilder.controller;
 
 import com.reportbuilder.model.Table;
-import com.reportbuilder.repository.TableRepository;
+import com.reportbuilder.service.TableService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -12,23 +13,23 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class TableController {
 
-    private final TableRepository tableRepository;
+    private final TableService tableService;
 
     @PostMapping(value = "/create-table", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody Table table) {
-        tableRepository.save(table);
+    public void create(@Valid @RequestBody Table table) {
+        tableService.save(table);
     }
 
     @GetMapping("get-table-by-name/{name}")
     @ResponseStatus(HttpStatus.OK)
     public Table get(@PathVariable String name) {
-        return tableRepository.getByName(name).get();
+        return tableService.getByName(name);
     }
 
     @DeleteMapping("drop-table/{name}")
     @ResponseStatus(HttpStatus.CREATED)
     public void delete(@PathVariable String name) {
-        tableRepository.deleteByName(name);
+        tableService.deleteByName(name);
     }
 }

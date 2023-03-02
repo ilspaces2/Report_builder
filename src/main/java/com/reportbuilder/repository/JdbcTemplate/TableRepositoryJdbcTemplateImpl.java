@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-//https://mkyong.com/spring/spring-jdbctemplate-querying-examples/
 @RequiredArgsConstructor
 @Repository
 public class TableRepositoryJdbcTemplateImpl implements TableRepository {
@@ -20,22 +19,8 @@ public class TableRepositoryJdbcTemplateImpl implements TableRepository {
     private final JdbcTemplate jdbcTemplate;
 
     @Override
-    public void save(Table table) {
-        StringBuilder sb = new StringBuilder("CREATE TABLE ").append(table.getTableName()).append(" (");
-        for (int i = 0; i < table.getColumnsAmount(); i++) {
-            Column column = table.getColumnInfos().get(i);
-            if (table.getPrimaryKey().equals(column.getTitle())) {
-                sb.append(column.getTitle()).append(" ").append(column.getType());
-                sb.append(" primary key");
-            } else {
-                sb.append(column.getTitle()).append(" ").append(column.getType());
-            }
-            if (i < table.getColumnsAmount() - 1) {
-                sb.append(", ");
-            }
-        }
-        sb.append(");");
-        jdbcTemplate.execute(sb.toString());
+    public void save(String sql) {
+        jdbcTemplate.execute(sql);
     }
 
     @Override
@@ -56,11 +41,11 @@ public class TableRepositoryJdbcTemplateImpl implements TableRepository {
                     columns,
                     columns.get(0).getTitle().toLowerCase()));
         } catch (SQLException e) {
-            e.printStackTrace();
+            return Optional.empty();
         }
-        return Optional.empty();
     }
 
+    // TODO when delete table then delete from report (table_names)
     @Override
     public void deleteByName(String name) {
         jdbcTemplate.execute(String.format("DROP TABLE %s;", name));

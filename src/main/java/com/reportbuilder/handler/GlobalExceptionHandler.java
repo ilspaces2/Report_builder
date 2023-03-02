@@ -1,6 +1,7 @@
 package com.reportbuilder.handler;
 
 import com.reportbuilder.exception.ReportException;
+import com.reportbuilder.exception.TableException;
 import jakarta.validation.ConstraintViolationException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -76,6 +77,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(ReportException.class)
     public ResponseEntity<?> reportException(ReportException ex, WebRequest request) {
         log.error("Report exception: {}", ex.getMessage());
+        return createProblemDetailExceptionResponse(ex, false, NOT_ACCEPTABLE, request);
+    }
+
+    @ExceptionHandler(TableException.class)
+    public ResponseEntity<?> tableException(TableException ex, WebRequest request) {
+        log.error("Table exception: {}", ex.getMessage());
         return createProblemDetailExceptionResponse(ex, false, NOT_ACCEPTABLE, request);
     }
 
