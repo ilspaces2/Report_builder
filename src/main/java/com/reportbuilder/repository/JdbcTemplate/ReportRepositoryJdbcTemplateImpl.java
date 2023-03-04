@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
 @RequiredArgsConstructor
+@Repository
 public class ReportRepositoryJdbcTemplateImpl implements ReportRepository {
 
     private final JdbcTemplate jdbcTemplate;

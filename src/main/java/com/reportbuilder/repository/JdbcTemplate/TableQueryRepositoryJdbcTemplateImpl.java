@@ -15,35 +15,32 @@ public class TableQueryRepositoryJdbcTemplateImpl implements TableQueryRepositor
 
     private final JdbcTemplate jdbcTemplate;
 
+
     @Override
     public void save(TableQuery tableQuery) {
-        if (findTableByName(tableQuery.getTableName()) == 1) {
-            jdbcTemplate.update(
-                    "insert into table_query (queryId, tableName, query) values (?,?,?)",
-                    tableQuery.getQueryId(),
-                    tableQuery.getTableName(),
-                    tableQuery.getQuery());
-        }
+        jdbcTemplate.update(
+                "insert into table_query (query_id, table_name, query) values (?,?,?)",
+                tableQuery.getQueryId(),
+                tableQuery.getTableName(),
+                tableQuery.getQuery());
     }
 
     @Override
     public void update(TableQuery tableQuery) {
-        if (findTableByName(tableQuery.getTableName()) == 1) {
-            jdbcTemplate.update(
-                    "update table_query set query=? where queryId=?",
-                    tableQuery.getQuery(),
-                    tableQuery.getQueryId());
-        }
+        jdbcTemplate.update(
+                "update table_query set query=? where query_id=?",
+                tableQuery.getQuery(),
+                tableQuery.getQueryId());
     }
 
     @Override
     public void deleteById(int id) {
-        jdbcTemplate.update("delete from table_query where queryId=?", id);
+        jdbcTemplate.update("delete from table_query where query_id=?", id);
     }
 
     @Override
     public void executeById(int id) {
-        String sql = jdbcTemplate.queryForObject("select query from table_query where queryId=?", String.class, id);
+        String sql = jdbcTemplate.queryForObject("select query from table_query where query_id=?", String.class, id);
         if (sql != null) {
             jdbcTemplate.execute(sql);
         }
@@ -51,26 +48,16 @@ public class TableQueryRepositoryJdbcTemplateImpl implements TableQueryRepositor
 
     @Override
     public List<TableQuery> getAllByName(String name) {
-        return jdbcTemplate.queryForList("select * from table_query where tableName=?", TableQuery.class, name);
+        return jdbcTemplate.queryForList("select * from table_query where table_name=?", TableQuery.class, name);
     }
 
     @Override
     public Optional<TableQuery> getById(int id) {
-        return Optional.ofNullable(jdbcTemplate.queryForObject("select * from table_query where queryId=?", TableQuery.class, id));
+        return Optional.ofNullable(jdbcTemplate.queryForObject("select * from table_query where query_id=?", TableQuery.class, id));
     }
 
     @Override
     public List<TableQuery> getAll() {
         return jdbcTemplate.queryForList("select * from table_query", TableQuery.class);
-    }
-
-    private Integer findTableByName(String name) {
-        return jdbcTemplate.queryForObject(
-                """
-                        SELECT count(*) FROM information_schema.tables
-                        WHERE table_name = ?
-                        LIMIT 1;
-                        """
-                , Integer.class, name.toUpperCase());
     }
 }

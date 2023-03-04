@@ -1,5 +1,8 @@
 package com.reportbuilder.model;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,11 +12,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TableQuery {
 
+    @Min(1)
     private int queryId;
 
-    //length 50;
+    @NotBlank
+    @Size(max = 50)
     private String tableName;
 
-    //length 120;
+    @NotBlank
+    @Size(max = 120)
     private String query;
 }
