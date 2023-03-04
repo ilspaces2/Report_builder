@@ -11,4 +11,6 @@ public interface TableRepository {
     Optional<Table> getByName(String name);
 
     void deleteByName(String name);
+
+    boolean tableExists(String name);
 }

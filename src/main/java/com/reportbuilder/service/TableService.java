@@ -15,6 +15,9 @@ public class TableService {
     private final TableRepository tableRepository;
 
     public void save(Table table) {
+        if (tableExists(table.getTableName())) {
+            throw new TableException("Table already exists");
+        }
         tableRepository.save(parseFromTableToSql(table));
     }
 
@@ -23,6 +26,9 @@ public class TableService {
     }
 
     public void deleteByName(String name) {
+        if (!tableExists(name)) {
+            throw new TableException("Table not found");
+        }
         tableRepository.deleteByName(name);
     }
 
@@ -61,6 +67,10 @@ public class TableService {
                 "|" + TypeOfData.int4)) {
             throw new TableException("Type incorrect: " + type);
         }
+    }
+
+    private boolean tableExists(String tableName) {
+        return tableRepository.tableExists(tableName);
     }
 }
 

@@ -50,4 +50,15 @@ public class TableRepositoryJdbcTemplateImpl implements TableRepository {
     public void deleteByName(String name) {
         jdbcTemplate.execute(String.format("DROP TABLE %s;", name));
     }
+
+    @Override
+    public boolean tableExists(String name) {
+        return jdbcTemplate.queryForObject(
+                """
+                        SELECT count(*) FROM information_schema.tables
+                        WHERE table_name = ?
+                        LIMIT 1;
+                        """
+                , Integer.class, name.toUpperCase()) == 1;
+    }
 }
