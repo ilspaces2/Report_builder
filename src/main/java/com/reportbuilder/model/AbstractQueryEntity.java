@@ -1,19 +1,21 @@
 package com.reportbuilder.model;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Setter
-@Getter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TableQuery extends AbstractQueryEntity {
+public abstract class AbstractQueryEntity {
+
+    @Min(1)
+    private int queryId;
 
     @NotBlank
-    @Size(max = 50)
-    private String tableName;
+    @Size(max = 120)
+    private String query;
 }

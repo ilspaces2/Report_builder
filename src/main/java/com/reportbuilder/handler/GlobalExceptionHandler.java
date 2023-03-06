@@ -1,5 +1,6 @@
 package com.reportbuilder.handler;
 
+import com.reportbuilder.exception.QueryException;
 import com.reportbuilder.exception.ReportException;
 import com.reportbuilder.exception.TableException;
 import jakarta.validation.ConstraintViolationException;
@@ -83,6 +84,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(TableException.class)
     public ResponseEntity<?> tableException(TableException ex, WebRequest request) {
         log.error("Table exception: {}", ex.getMessage());
+        return createProblemDetailExceptionResponse(ex, false, NOT_ACCEPTABLE, request);
+    }
+
+    @ExceptionHandler(QueryException.class)
+    public ResponseEntity<?> tableException(QueryException ex, WebRequest request) {
+        log.error("Query exception: {}", ex.getMessage());
         return createProblemDetailExceptionResponse(ex, false, NOT_ACCEPTABLE, request);
     }
 

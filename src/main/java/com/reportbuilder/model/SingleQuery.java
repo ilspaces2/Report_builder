@@ -1,16 +1,13 @@
 package com.reportbuilder.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SingleQuery {
-
-    private int queryId;
-
-    //length 120;
-    private String query;
+public class SingleQuery extends AbstractQueryEntity {
 }

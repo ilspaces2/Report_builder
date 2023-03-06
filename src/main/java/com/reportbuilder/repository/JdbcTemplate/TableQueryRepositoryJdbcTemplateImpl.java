@@ -15,7 +15,6 @@ public class TableQueryRepositoryJdbcTemplateImpl implements TableQueryRepositor
 
     private final JdbcTemplate jdbcTemplate;
 
-
     @Override
     public void save(TableQuery tableQuery) {
         jdbcTemplate.update(

@@ -33,12 +33,12 @@ public class SingleQueryRepositoryJdbcTemplateImpl implements SingleQueryReposit
 
     @Override
     public void deleteById(int id) {
-        jdbcTemplate.update("delete from single_query where queryId=?", id);
+        jdbcTemplate.update("delete from single_query where query_id=?", id);
     }
 
     @Override
     public void executeById(int id) {
-        String sql = jdbcTemplate.queryForObject("select query from single_query where queryId=?", String.class, id);
+        String sql = jdbcTemplate.queryForObject("select query from single_query where query_id=?", String.class, id);
         if (sql != null) {
             jdbcTemplate.execute(sql);
         }
