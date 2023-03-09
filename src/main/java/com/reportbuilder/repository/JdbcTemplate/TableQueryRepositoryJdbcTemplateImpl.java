@@ -3,6 +3,7 @@ package com.reportbuilder.repository.JdbcTemplate;
 import com.reportbuilder.model.TableQuery;
 import com.reportbuilder.repository.TableQueryRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +19,7 @@ public class TableQueryRepositoryJdbcTemplateImpl implements TableQueryRepositor
     @Override
     public void save(TableQuery tableQuery) {
         jdbcTemplate.update(
-                "insert into table_query (query_id, table_name, query) values (?,?,?)",
+                "insert into table_query (query_id, tables_names, query) values (?,?,?)",
                 tableQuery.getQueryId(),
                 tableQuery.getTableName(),
                 tableQuery.getQuery());
@@ -47,16 +48,24 @@ public class TableQueryRepositoryJdbcTemplateImpl implements TableQueryRepositor
 
     @Override
     public List<TableQuery> getAllByName(String name) {
-        return jdbcTemplate.queryForList("select * from table_query where table_name=?", TableQuery.class, name);
+        return jdbcTemplate.query(
+                "select * from table_query where table_name=?",
+                new BeanPropertyRowMapper<>(TableQuery.class),
+                name);
     }
 
     @Override
     public Optional<TableQuery> getById(int id) {
-        return Optional.ofNullable(jdbcTemplate.queryForObject("select * from table_query where query_id=?", TableQuery.class, id));
+        List<TableQuery> tableQueries = jdbcTemplate.query(
+                "select * from table_query where query_id=?",
+                new BeanPropertyRowMapper<>(TableQuery.class),
+                id);
+        return tableQueries.isEmpty() ? Optional.empty() : Optional.of(tableQueries.get(0));
     }
 
     @Override
     public List<TableQuery> getAll() {
-        return jdbcTemplate.queryForList("select * from table_query", TableQuery.class);
+        return jdbcTemplate.query(
+                "select * from table_query", new BeanPropertyRowMapper<>(TableQuery.class));
     }
 }

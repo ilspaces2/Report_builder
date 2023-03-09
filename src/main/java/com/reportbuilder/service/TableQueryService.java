@@ -1,5 +1,6 @@
 package com.reportbuilder.service;
 
+import com.reportbuilder.exception.QueryException;
 import com.reportbuilder.exception.TableException;
 import com.reportbuilder.model.TableQuery;
 import com.reportbuilder.repository.TableQueryRepository;
@@ -28,16 +29,18 @@ public class TableQueryService {
     }
 
     public void update(TableQuery tableQuery) {
-        if (!tableRepository.tableExists(tableQuery.getTableName()) ||
-                tableQueryRepository.getById(tableQuery.getQueryId()).isEmpty()) {
-            throw new TableException("Table or queryId not found");
+        if (tableQueryRepository.getById(tableQuery.getQueryId()).isEmpty()) {
+            throw new QueryException("QueryId not found");
+        }
+        if (!tableRepository.tableExists(tableQuery.getTableName())) {
+            throw new TableException("Table not found");
         }
         tableQueryRepository.update(tableQuery);
     }
 
     public void deleteById(int id) {
         if (tableQueryRepository.getById(id).isEmpty()) {
-            throw new TableException("QueryId not found");
+            throw new QueryException("QueryId not found");
         }
         tableQueryRepository.deleteById(id);
     }
@@ -56,10 +59,9 @@ public class TableQueryService {
         return tableQueryRepository.getAllByName(name);
     }
 
-    //TODO check exception (need 500 Internal Server Error)
     public TableQuery getById(int id) {
         if (tableQueryRepository.getById(id).isEmpty()) {
-            throw new NoSuchElementException();
+            throw new NoSuchElementException("QueryId not found");
         }
         return tableQueryRepository.getById(id).get();
     }
