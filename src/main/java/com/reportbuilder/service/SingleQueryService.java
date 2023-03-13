@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,25 +21,36 @@ public class SingleQueryService {
     }
 
     public void update(SingleQuery singleQuery) {
-        getById(singleQuery.getQueryId());
+        checkId(singleQuery.getQueryId());
         singleQueryRepository.update(singleQuery);
     }
 
     public void deleteById(int id) {
-        getById(id);
+        checkId(id);
         singleQueryRepository.deleteById(id);
     }
 
     public void execute(int id) {
-        getById(id);
+        checkId(id);
         singleQueryRepository.executeById(id);
     }
 
     public SingleQuery getById(int id) {
-        return singleQueryRepository.getById(id).orElseThrow(() -> new QueryException("Query not found"));
+        Optional<SingleQuery> singleQuery = singleQueryRepository.getById(id);
+        if (singleQuery.isEmpty()) {
+            throw new NoSuchElementException("QueryId not found");
+        }
+        return singleQuery.get();
     }
 
     public List<SingleQuery> getAll() {
         return singleQueryRepository.getAll();
     }
+
+    private void checkId(int id) {
+        singleQueryRepository.getById(id).orElseThrow(() -> new QueryException("Query not found"));
+    }
+
 }
+
+

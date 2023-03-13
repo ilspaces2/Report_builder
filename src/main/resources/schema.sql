@@ -12,3 +12,8 @@ create table if not exists table_query(
     table_name varchar,
     query varchar
 );
+
+create table if not exists single_query(
+    query_id int unique primary key,
+    query varchar
+);

@@ -3,6 +3,7 @@ package com.reportbuilder.repository.JdbcTemplate;
 import com.reportbuilder.model.SingleQuery;
 import com.reportbuilder.repository.SingleQueryRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +19,7 @@ public class SingleQueryRepositoryJdbcTemplateImpl implements SingleQueryReposit
     @Override
     public void save(SingleQuery singleQuery) {
         jdbcTemplate.update(
-                "insert into single_query (queryId, query) values (?,?)",
+                "insert into single_query (query_id, query) values (?,?)",
                 singleQuery.getQueryId(),
                 singleQuery.getQuery());
     }
@@ -26,7 +27,7 @@ public class SingleQueryRepositoryJdbcTemplateImpl implements SingleQueryReposit
     @Override
     public void update(SingleQuery singleQuery) {
         jdbcTemplate.update(
-                "update single_query set query=? where queryId=?",
+                "update single_query set query=? where query_id=?",
                 singleQuery.getQuery(),
                 singleQuery.getQueryId());
     }
@@ -46,11 +47,14 @@ public class SingleQueryRepositoryJdbcTemplateImpl implements SingleQueryReposit
 
     @Override
     public Optional<SingleQuery> getById(int id) {
-        return Optional.ofNullable(jdbcTemplate.queryForObject("select * from single_query where queryId=?", SingleQuery.class, id));
+        List<SingleQuery> singleQueries = jdbcTemplate.query("select * from single_query where query_id=?",
+                new BeanPropertyRowMapper<>(SingleQuery.class),
+                id);
+        return singleQueries.isEmpty() ? Optional.empty() : Optional.of(singleQueries.get(0));
     }
 
     @Override
     public List<SingleQuery> getAll() {
-        return jdbcTemplate.queryForList("select * from single_query", SingleQuery.class);
+        return jdbcTemplate.query("select * from single_query", new BeanPropertyRowMapper<>(SingleQuery.class));
     }
 }

@@ -19,13 +19,13 @@ public class SingleQueryController {
 
     @PostMapping(value = "/add-new-query", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@Valid SingleQuery singleQuery) {
+    public void save(@Valid @RequestBody SingleQuery singleQuery) {
         singleQueryService.save(singleQuery);
     }
 
     @PutMapping(value = "/modify-single-query", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public void update(@Valid SingleQuery singleQuery) {
+    public void update(@Valid @RequestBody SingleQuery singleQuery) {
         singleQueryService.update(singleQuery);
     }
 
@@ -35,7 +35,7 @@ public class SingleQueryController {
         singleQueryService.deleteById(id);
     }
 
-    @GetMapping("/execute-single-query-by-id/{id}\n")
+    @GetMapping("/execute-single-query-by-id/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public void execute(@PathVariable int id) {
         singleQueryService.execute(id);

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,33 +23,23 @@ public class TableQueryService {
 
     //TODO: validate query?
     public void save(TableQuery tableQuery) {
-        if (!tableRepository.tableExists(tableQuery.getTableName())) {
-            throw new TableException("Table not found");
-        }
+        checkTable(tableQuery.getTableName());
         tableQueryRepository.save(tableQuery);
     }
 
     public void update(TableQuery tableQuery) {
-        if (tableQueryRepository.getById(tableQuery.getQueryId()).isEmpty()) {
-            throw new QueryException("QueryId not found");
-        }
-        if (!tableRepository.tableExists(tableQuery.getTableName())) {
-            throw new TableException("Table not found");
-        }
+        checkId(tableQuery.getQueryId());
+        checkTable(tableQuery.getTableName());
         tableQueryRepository.update(tableQuery);
     }
 
     public void deleteById(int id) {
-        if (tableQueryRepository.getById(id).isEmpty()) {
-            throw new QueryException("QueryId not found");
-        }
+        checkId(id);
         tableQueryRepository.deleteById(id);
     }
 
     public void execute(int id) {
-        if (tableQueryRepository.getById(id).isEmpty()) {
-            throw new TableException("QueryId not found");
-        }
+        checkId(id);
         tableQueryRepository.executeById(id);
     }
 
@@ -60,13 +51,26 @@ public class TableQueryService {
     }
 
     public TableQuery getById(int id) {
-        if (tableQueryRepository.getById(id).isEmpty()) {
+        Optional<TableQuery> tableQuery = tableQueryRepository.getById(id);
+        if (tableQuery.isEmpty()) {
             throw new NoSuchElementException("QueryId not found");
         }
-        return tableQueryRepository.getById(id).get();
+        return tableQuery.get();
     }
 
     public List<TableQuery> getAll() {
         return tableQueryRepository.getAll();
+    }
+
+    private void checkId(int id) {
+        if (tableQueryRepository.getById(id).isEmpty()) {
+            throw new QueryException("QueryId not found");
+        }
+    }
+
+    private void checkTable(String name) {
+        if (!tableRepository.tableExists(name)) {
+            throw new TableException("Table not found");
+        }
     }
 }
